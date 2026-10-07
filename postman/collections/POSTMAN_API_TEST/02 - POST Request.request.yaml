@@ -1,0 +1,51 @@
+$kind: http-request
+url: "{{baseUrl}}/post"
+method: POST
+body:
+  type: json
+  content: "{\r
+
+    \    \"name\": \"Ngô Vương Linh\",\r
+
+    \    \"age\": 21,\r
+
+    \    \"class\": \"KTPM\"\r
+
+    }"
+scripts:
+  - type: afterResponse
+    code: "pm.test(\"Status code is 200\", function () {\r
+
+      \    pm.response.to.have.status(200);\r
+
+      });\r
+
+      \r
+
+      pm.test(\"Response is JSON\", function () {\r
+
+      \    pm.response.to.be.json;\r
+
+      });\r
+
+      \r
+
+      pm.test(\"Name is correct\", function () {\r
+
+      \    const jsonData = pm.response.json();\r
+
+      \    pm.expect(jsonData.json.name).to.eql(\"Ngô Vương Linh\");\r
+
+      });\r
+
+      \r
+
+      pm.test(\"Age is correct\", function () {\r
+
+      \    const jsonData = pm.response.json();\r
+
+      \    pm.expect(jsonData.json.age).to.eql(21);\r
+
+      });"
+    language: text/javascript
+order: 279452626593349

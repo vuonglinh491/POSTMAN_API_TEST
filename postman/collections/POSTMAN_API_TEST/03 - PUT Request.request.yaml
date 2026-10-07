@@ -1,0 +1,31 @@
+$kind: http-request
+url: "{{baseUrl}}/put"
+method: PUT
+body:
+  type: json
+  content: "{\r
+
+    \    \"name\": \"Ngo Vuong Linh\",\r
+
+    \    \"age\": 21,\r
+
+    \    \"class\": \"KTPM\"\r
+
+    }"
+scripts:
+  - type: afterResponse
+    code: "pm.test(\"Status code is 200\", function () {\r
+
+      \    pm.response.to.have.status(200);\r
+
+      });\r
+
+      \r
+
+      pm.test(\"Response is JSON\", function () {\r
+
+      \    pm.response.to.be.json;\r
+
+      });"
+    language: text/javascript
+order: 3924582294628182

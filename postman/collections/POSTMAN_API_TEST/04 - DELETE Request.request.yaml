@@ -1,0 +1,20 @@
+$kind: http-request
+url: "{{baseUrl}}/delete"
+method: DELETE
+scripts:
+  - type: afterResponse
+    code: "pm.test(\"Status code is 200\", function () {\r
+
+      \    pm.response.to.have.status(200);\r
+
+      });\r
+
+      \r
+
+      pm.test(\"Response is JSON\", function () {\r
+
+      \    pm.response.to.be.json;\r
+
+      });"
+    language: text/javascript
+order: 4047452007267556

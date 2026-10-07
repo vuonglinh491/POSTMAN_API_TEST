@@ -1,0 +1,4 @@
+name: POSTMAN_ENV
+values:
+  - key: baseUrl
+    value: ''
